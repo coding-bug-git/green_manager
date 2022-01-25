@@ -1,11 +1,9 @@
 package cn.bug.green.system.service.impl;
 
-import cn.bug.green.common.annotation.DataSource;
 import cn.bug.green.common.constant.Constants;
 import cn.bug.green.common.constant.UserConstants;
 import cn.bug.green.common.core.redis.RedisCache;
 import cn.bug.green.common.core.text.Convert;
-import cn.bug.green.common.enums.DataSourceType;
 import cn.bug.green.common.exception.ServiceException;
 import cn.bug.green.common.utils.StringUtils;
 import cn.bug.green.system.domain.SysConfig;
@@ -46,7 +44,6 @@ public class SysConfigServiceImpl implements ISysConfigService {
      * @return 参数配置信息
      */
     @Override
-    @DataSource(DataSourceType.MASTER)
     public SysConfig selectConfigById(Long configId) {
         SysConfig config = new SysConfig();
         config.setConfigId(configId);

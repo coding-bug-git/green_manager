@@ -62,7 +62,10 @@
             <groupId>cn.bug.green</groupId>
             <artifactId>green-system</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>cn.bug.green</groupId>
+            <artifactId>green-bi</artifactId>
+        </dependency>
 
     </dependencies>
 </project>

@@ -192,7 +192,7 @@ spring:
           config:
             multi-statement-allow: true
       # 通过 connection-properties 属性打开 mergeSql 功能；慢 SQL 记录
-#      connection-properties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+      #      connection-properties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
       # 配置 DruidStatFilter
       web-stat-filter:
         enabled: true
@@ -229,7 +229,7 @@ mybatis-plus:
     cache-enabled: true
     use-generated-keys: true
     default-executor-type: simple
-#  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  #  mapper-locations: classpath*:mapper/**/*Mapper.xml
   type-aliases-package: cn.bug.green.**.domain
 
 

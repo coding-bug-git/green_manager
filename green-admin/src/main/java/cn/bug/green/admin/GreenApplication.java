@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class GreenApplication {
     public static void main(String[] args) {
         SpringApplication.run(GreenApplication.class, args);
-        System.out.println("(♥◠‿◠)ﾉﾞ  success start  ლ(´ڡ`ლ)ﾞ  \n" +
+        System.out.println("\n\n(♥◠‿◠)ﾉﾞ  success start  ლ(´ڡ`ლ)ﾞ  \n" +
                 "\n" +
                 "               _ _                    _                 \n" +
                 "              | (_)                  | |                \n" +

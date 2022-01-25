@@ -9,22 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>green-system</artifactId>
+    <artifactId>green-dingtalk</artifactId>
 
     <properties>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    <description>system系统模块</description>
-
-    <dependencies>
-
-        <!-- 通用工具-->
-        <dependency>
-            <groupId>cn.bug.green</groupId>
-            <artifactId>green-common</artifactId>
-        </dependency>
-
-    </dependencies>
 
 </project>

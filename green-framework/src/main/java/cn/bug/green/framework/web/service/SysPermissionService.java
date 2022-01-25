@@ -3,7 +3,6 @@ package cn.bug.green.framework.web.service;
 import cn.bug.green.common.core.domain.entity.SysUser;
 import cn.bug.green.system.service.ISysMenuService;
 import cn.bug.green.system.service.ISysRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -17,11 +16,14 @@ import java.util.Set;
 @Component
 public class SysPermissionService
 {
-    @Autowired
-    private ISysRoleService roleService;
+    private final ISysRoleService roleService;
 
-    @Autowired
-    private ISysMenuService menuService;
+    private final ISysMenuService menuService;
+
+    public SysPermissionService(ISysRoleService roleService, ISysMenuService menuService) {
+        this.roleService = roleService;
+        this.menuService = menuService;
+    }
 
     /**
      * 获取角色数据权限
@@ -31,7 +33,7 @@ public class SysPermissionService
      */
     public Set<String> getRolePermission(SysUser user)
     {
-        Set<String> roles = new HashSet<String>();
+        Set<String> roles = new HashSet<>();
         // 管理员拥有所有权限
         if (user.isAdmin())
         {

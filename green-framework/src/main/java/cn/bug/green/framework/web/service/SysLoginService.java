@@ -17,7 +17,6 @@ import cn.bug.green.framework.manager.AsyncManager;
 import cn.bug.green.framework.manager.factory.AsyncFactory;
 import cn.bug.green.system.service.ISysConfigService;
 import cn.bug.green.system.service.ISysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,20 +30,23 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SysLoginService {
-    @Autowired
-    private TokenService tokenService;
+    private final TokenService tokenService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private RedisCache redisCache;
+    private final RedisCache redisCache;
 
-    @Autowired
-    private ISysUserService userService;
+    private final ISysUserService userService;
 
-    @Autowired
-    private ISysConfigService configService;
+    private final ISysConfigService configService;
+
+    public SysLoginService(TokenService tokenService, AuthenticationManager authenticationManager, RedisCache redisCache, ISysUserService userService, ISysConfigService configService) {
+        this.tokenService = tokenService;
+        this.authenticationManager = authenticationManager;
+        this.redisCache = redisCache;
+        this.userService = userService;
+        this.configService = configService;
+    }
 
     /**
      * 登录验证
@@ -58,11 +60,11 @@ public class SysLoginService {
     public String login(String username, String password, String code, String uuid) {
         boolean captchaOnOff = configService.selectCaptchaOnOff();
         // 验证码开关
-        if (captchaOnOff) {
-            validateCaptcha(username, code, uuid);
-        }
+        // if (captchaOnOff) {
+        //     validateCaptcha(username, code, uuid);
+        // }
         // 用户验证
-        Authentication authentication = null;
+        Authentication authentication;
         try {
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
             authentication = authenticationManager
