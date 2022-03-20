@@ -39,6 +39,8 @@ public class GreenDBConfig {
         return dataSourceProperties;
     }
 
+
+    // @DependsOn({"txManager"})
     @Bean(name = "greenDataSource")
     public DataSource dataSource(@Qualifier("greenDBProperties") XADataSourceProperties dataSourceProperties) {
         // 这里datasource要使用阿里的支持XA的DruidXADataSource
@@ -71,6 +73,7 @@ public class GreenDBConfig {
         factoryBean.setPlugins(mybatisPlusInterceptor());
         return factoryBean.getObject();
     }
+
 
     private MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();

@@ -24,7 +24,7 @@ server:
   port: 8080
   servlet:
     # 应用的访问路径
-    context-path: /
+    context-path: /dev-api
   tomcat:
     # tomcat的URI编码
     uri-encoding: UTF-8
@@ -209,7 +209,7 @@ spring:
         reset-enable: false
         # 登录用户名/密码
         login-username: root
-        login-password: 123
+        login-password: 1234
         enabled: true
 # token配置
 token:
@@ -254,4 +254,3 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
-

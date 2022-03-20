@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PageController extends BaseController {
     @GetMapping(value = {"/index", ""})
     public String index() {
-        return redirect("/swagger-ui/");
+        return redirect("swagger-ui/");
     }
 
     @PreAuthorize("hasAuthority('tool:swagger:view')")
     @GetMapping(value = {"/tool/manager"})
     public String swagger() {
-        return redirect("/swagger-ui/");
+        return redirect("swagger-ui/");
     }
 }

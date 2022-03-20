@@ -64,6 +64,10 @@
             <groupId>cn.bug.green</groupId>
             <artifactId>green-framework</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.bug.green</groupId>
+            <artifactId>green-dingtalk</artifactId>
+        </dependency>
 
     </dependencies>
 

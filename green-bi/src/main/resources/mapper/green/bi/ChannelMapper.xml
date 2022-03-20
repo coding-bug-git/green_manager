@@ -2,15 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.bug.green.bi.mapper.FactoryMapper">
+<mapper namespace="cn.bug.green.bi.mapper.green.ChannelMapper">
 
-    <resultMap id="BaseResultMap" type="Factory">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="cnName" column="cn_name" jdbcType="VARCHAR"/>
-            <result property="enName" column="en_name" jdbcType="VARCHAR"/>
-            <result property="gbCode" column="gb_code" jdbcType="VARCHAR"/>
-            <result property="modelId" column="model_id" jdbcType="INTEGER"/>
-            <result property="order" column="order" jdbcType="INTEGER"/>
+    <resultMap id="BaseResultMap" type="Channel">
+            <id property="channelId" column="channel_id" jdbcType="INTEGER"/>
+            <result property="channelName" column="channel_name" jdbcType="VARCHAR"/>
+            <result property="deviceId" column="device_id" jdbcType="INTEGER"/>
             <result property="isDel" column="is_del" jdbcType="BIT"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
@@ -19,8 +16,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,cn_name,en_name,
-        gb_code,model_id,`order`,
+        channel_id,channel_name,device_id,
         is_del,create_time,modify_time,
         create_user_id,modify_user_id
     </sql>

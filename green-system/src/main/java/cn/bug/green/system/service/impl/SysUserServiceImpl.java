@@ -5,7 +5,7 @@ import cn.bug.green.common.constant.UserConstants;
 import cn.bug.green.common.core.domain.entity.SysRole;
 import cn.bug.green.common.core.domain.entity.SysUser;
 import cn.bug.green.common.exception.ServiceException;
-import cn.bug.green.common.utils.SecurityUtils;
+import cn.bug.green.common.utils.AuthenticateUtils;
 import cn.bug.green.common.utils.StringUtils;
 import cn.bug.green.common.utils.bean.BeanValidators;
 import cn.bug.green.common.utils.spring.SpringUtils;
@@ -15,6 +15,7 @@ import cn.bug.green.system.domain.SysUserRole;
 import cn.bug.green.system.mapper.green.*;
 import cn.bug.green.system.service.ISysConfigService;
 import cn.bug.green.system.service.ISysUserService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ import java.util.stream.Collectors;
  * @author coding-bug
  */
 @Service
-public class SysUserServiceImpl implements ISysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
     private static final Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
     @Autowired
@@ -102,6 +103,17 @@ public class SysUserServiceImpl implements ISysUserService {
     @Override
     public SysUser selectUserByUserName(String userName) {
         return userMapper.selectUserByUserName(userName);
+    }
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param dingId DING id
+     * @return 用户对象信息
+     */
+    @Override
+    public SysUser selectUserByDingId(String dingId) {
+        return userMapper.selectUserByDingId(dingId);
     }
 
     /**
@@ -211,13 +223,16 @@ public class SysUserServiceImpl implements ISysUserService {
      */
     @Override
     public void checkUserDataScope(Long userId) {
-        if (!SysUser.isAdmin(SecurityUtils.getUserId())) {
+
+        if (!SysUser.isAdmin(AuthenticateUtils.getUserId())) {
             SysUser user = new SysUser();
             user.setUserId(userId);
             List<SysUser> users = SpringUtils.getAopProxy(this).selectUserList(user);
+
             if (StringUtils.isEmpty(users)) {
                 throw new ServiceException("没有权限访问用户数据！");
             }
+
         }
     }
 
@@ -466,7 +481,7 @@ public class SysUserServiceImpl implements ISysUserService {
                 SysUser u = userMapper.selectUserByUserName(user.getUserName());
                 if (StringUtils.isNull(u)) {
                     BeanValidators.validateWithException(validator, user);
-                    user.setPassword(SecurityUtils.encryptPassword(password));
+                    user.setPassword(AuthenticateUtils.encryptPassword(password));
                     user.setCreateBy(operName);
                     this.insertUser(user);
                     successNum++;

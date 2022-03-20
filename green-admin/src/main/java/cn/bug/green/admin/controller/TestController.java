@@ -31,10 +31,14 @@ public class TestController {
     @Autowired
     TestService testService;
 
-    @PreAuthorize("hasAuthority('system:')")
+    @PreAuthorize("@ps.hasPermi('bi:monitor:list')")
     @ApiOperation("联表视图测试")
     @GetMapping("1")
     public Object test1() {
         return testService.listFactoryInfo();
+    }
+    @GetMapping("2")
+    public Object test2(){
+        return "test2";
     }
 }

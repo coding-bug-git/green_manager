@@ -33,5 +33,4 @@ public class DBCommonConfig {
     public XADataSourceProperties mysqlDBParent() {
         return new XADataSourceProperties();
     }
-
 }

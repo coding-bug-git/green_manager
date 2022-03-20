@@ -5,7 +5,7 @@ import cn.bug.green.common.core.domain.model.LoginUser;
 import cn.bug.green.common.core.page.PageDomain;
 import cn.bug.green.common.core.page.TableDataInfo;
 import cn.bug.green.common.core.page.TableSupport;
-import cn.bug.green.common.utils.SecurityUtils;
+import cn.bug.green.common.utils.AuthenticateUtils;
 import cn.bug.green.common.utils.StringUtils;
 import cn.bug.green.common.utils.sql.SqlUtil;
 import org.slf4j.Logger;
@@ -105,7 +105,7 @@ public class BaseController {
      * 获取用户缓存信息
      */
     public LoginUser getLoginUser() {
-        return SecurityUtils.getLoginUser();
+        return AuthenticateUtils.getLoginUser();
     }
 
     /**

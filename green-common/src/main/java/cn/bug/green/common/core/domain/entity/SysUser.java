@@ -4,6 +4,7 @@ import cn.bug.green.common.annotation.Excel;
 import cn.bug.green.common.annotation.Excels;
 import cn.bug.green.common.core.domain.BaseEntity;
 import cn.bug.green.common.xss.Xss;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -34,6 +35,13 @@ public class SysUser extends BaseEntity {
      */
     @Excel(name = "部门编号", type = Excel.Type.IMPORT)
     private Long deptId;
+
+    /**
+     * DingID
+     */
+    @Excel(name = "DingID", type = Excel.Type.IMPORT)
+    private String dingId;
+
 
     /**
      * 用户账号
@@ -78,6 +86,7 @@ public class SysUser extends BaseEntity {
     /**
      * 盐加密
      */
+    @TableField(exist = false)
     private String salt;
 
     /**
@@ -110,6 +119,7 @@ public class SysUser extends BaseEntity {
             @Excel(name = "部门名称", targetAttr = "deptName", type = Excel.Type.EXPORT),
             @Excel(name = "部门负责人", targetAttr = "leader", type = Excel.Type.EXPORT)
     })
+    @TableField(exist = false)
     private SysDept dept;
 
     /**
@@ -142,6 +152,14 @@ public class SysUser extends BaseEntity {
 
     public Long getUserId() {
         return userId;
+    }
+
+    public String getDingId() {
+        return dingId;
+    }
+
+    public void setDingId(String dingId) {
+        this.dingId = dingId;
     }
 
     public void setUserId(Long userId) {
@@ -315,6 +333,7 @@ public class SysUser extends BaseEntity {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
                 .append("userId", getUserId())
                 .append("deptId", getDeptId())
+                .append("dingId", getDingId())
                 .append("userName", getUserName())
                 .append("nickName", getNickName())
                 .append("email", getEmail())

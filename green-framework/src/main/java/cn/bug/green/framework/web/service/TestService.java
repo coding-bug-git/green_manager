@@ -5,10 +5,10 @@ import cn.bug.green.bi.domain.Area;
 import cn.bug.green.bi.domain.Channel;
 import cn.bug.green.bi.domain.Device;
 import cn.bug.green.bi.domain.Factory;
-import cn.bug.green.bi.mapper.AreaMapper;
-import cn.bug.green.bi.mapper.ChannelMapper;
-import cn.bug.green.bi.mapper.DeviceMapper;
-import cn.bug.green.bi.mapper.FactoryMapper;
+import cn.bug.green.bi.mapper.green.AreaMapper;
+import cn.bug.green.bi.mapper.green.ChannelMapper;
+import cn.bug.green.bi.mapper.green.DeviceMapper;
+import cn.bug.green.bi.mapper.green.FactoryMapper;
 import cn.bug.green.system.domain.vo.AreaVO;
 import cn.bug.green.system.domain.vo.DeviceVO;
 import cn.bug.green.system.domain.vo.FactoryModelDetailVO;
@@ -39,7 +39,7 @@ public class TestService {
 
 
     public List<FactoryModelDetailVO> listFactoryInfo() {
-        List<Factory> factoryList = factoryMapper.selectList(Wrappers.emptyWrapper());
+        List<Factory> factoryList = factoryMapper.selectList(null);
         List<FactoryModelDetailVO> list = new ArrayList<>();
 
         factoryList.forEach(factory -> {

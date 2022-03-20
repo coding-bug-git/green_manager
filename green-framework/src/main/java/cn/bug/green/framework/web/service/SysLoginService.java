@@ -58,7 +58,7 @@ public class SysLoginService {
      * @return 结果
      */
     public String login(String username, String password, String code, String uuid) {
-        boolean captchaOnOff = configService.selectCaptchaOnOff();
+        // boolean captchaOnOff = configService.selectCaptchaOnOff();
         // 验证码开关
         // if (captchaOnOff) {
         //     validateCaptcha(username, code, uuid);
@@ -84,6 +84,7 @@ public class SysLoginService {
         // 生成token
         return tokenService.createToken(loginUser);
     }
+
 
     /**
      * 校验验证码

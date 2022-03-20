@@ -1,4 +1,4 @@
-package cn.bug.green.bi.mapper;
+package cn.bug.green.bi.mapper.green;
 
 import cn.bug.green.bi.domain.Factory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

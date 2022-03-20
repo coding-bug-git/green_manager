@@ -183,6 +183,20 @@
                 <version>${kaptcha.version}</version>
             </dependency>
 
+
+            <!-- dingding -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>dingtalk</artifactId>
+                <version>1.2.80</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>alibaba-dingtalk-service-sdk</artifactId>
+                <version>2.0.0</version>
+            </dependency>
+
             <!-- 定时任务-->
 
 
@@ -214,6 +228,15 @@
                 <artifactId>green-bi</artifactId>
                 <version>${green.version}</version>
             </dependency>
+
+            <!-- dingtalk-->
+            <dependency>
+                <groupId>cn.bug.green</groupId>
+                <artifactId>green-dingtalk</artifactId>
+                <version>${green.version}</version>
+            </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>

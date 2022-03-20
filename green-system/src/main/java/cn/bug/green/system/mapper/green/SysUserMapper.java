@@ -1,6 +1,7 @@
 package cn.bug.green.system.mapper.green;
 
 import cn.bug.green.common.core.domain.entity.SysUser;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @author coding-bug
  */
 @Mapper
-public interface SysUserMapper {
+public interface SysUserMapper extends BaseMapper<SysUser> {
     /**
      * 根据条件分页查询用户列表
      *
@@ -44,6 +45,14 @@ public interface SysUserMapper {
      * @return 用户对象信息
      */
     public SysUser selectUserByUserName(String userName);
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param dingId 用户钉钉ID
+     * @return 用户对象信息
+     */
+    public SysUser selectUserByDingId(String dingId);
 
     /**
      * 通过用户ID查询用户

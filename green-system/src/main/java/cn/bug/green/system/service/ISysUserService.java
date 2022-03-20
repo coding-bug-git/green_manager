@@ -1,6 +1,7 @@
 package cn.bug.green.system.service;
 
 import cn.bug.green.common.core.domain.entity.SysUser;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  *
  * @author coding-bug
  */
-public interface ISysUserService {
+public interface ISysUserService extends IService<SysUser> {
     /**
      * 根据条件分页查询用户列表
      *
@@ -41,6 +42,15 @@ public interface ISysUserService {
      * @return 用户对象信息
      */
     public SysUser selectUserByUserName(String userName);
+
+
+    /**
+     * 通过用户名查询用户
+     *
+     * @param dingId DING id
+     * @return 用户对象信息
+     */
+    public SysUser selectUserByDingId(String dingId);
 
     /**
      * 通过用户ID查询用户
